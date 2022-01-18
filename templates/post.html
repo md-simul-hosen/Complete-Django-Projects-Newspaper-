@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Post your news
+        {% endblock %}
+    </title>
+</head>
+<body>
+  {% block content %}
+  <center>
+      {% if user.is_authenticated %}
+      <h1>Post your news here !</h1><br>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="text" placeholder="News heading" name="heading" ><br><br>
+            <textarea placeholder="News Details" name="details"></textarea><br><br>
+            <input type="file" name="img"><br><br>
+            <input type="datetime-local" placeholder="Date & Time of the news" name="date"width="50%"><br><br>
+            <input type="submit">
+        </form>
+    <br>
+    <div style="width: 100%; height: 200px; padding: 20px;"></div>
+    <div class="float-right my-5 " style="margin-left: 1150px;">
+            <a href="{% url 'logout' %}" class="btn btn-info btn-lg ">
+                <span class="glyphicon glyphicon-log-out"></span> Log out
+            </a>
+        </div><br>
+    {% else %}
+   <span>Please Login to your account !</span><br>
+            <a href="{% url 'login' %}" style="font-size: 30px; padding: 20px; text-decoration: none;">Login Now!</a>
+      <div style="width: 100%; height: 450px; padding: 20px;"></div>
+    {% endif %}
+
+  {% endblock %}
+</center>
+</body>
+</html>

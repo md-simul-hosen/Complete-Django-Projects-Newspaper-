@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+    {% block title %}
+        Login Page
+    {% endblock %}
+{% block content %}<center>
+        {% for message in messages %}
+    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    <form action="" method="post" autocomplete="off" >
+{% csrf_token %}
+<div class="form-floating mb-3 w-25">
+    <input type="text" class="form-control" name="name" autocomplete="false"  placeholder="Username">
+    <label for="floatingInput">Username</label>
+    </div>
+<div class="form-floating w-25" >
+    <input type="password" class="form-control"  name="password" placeholder="Password">
+    <label for="floatingPassword">Password</label>
+    </div><br>
+        <p>I have <a href="{% url 'forgot' %}"> Forgot Password !</a></p>
+<button type="submit" class="btn btn-success btn-block" >Login</button></center><br>
+</form>
+<center><p>I don't have account <a href="{% url 'register' %}"> Register Now !</a></p></center>
+ <div style="width: 105%; height: 200px; padding: 20px;"></div>
+{% endblock %}

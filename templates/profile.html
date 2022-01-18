@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block title %}
+{{ user.username }}
+{% endblock %}
+
+{% block content %}
+<div class="mx-5">
+    <h3>Account Information: </h3>
+<p>Name : {{ user.username }}</p>
+<p>Email : {{ user.email }}</p></div>
+{% endblock %}
+
+{% block slider %}
+{% endblock %}
+
+{% block log_out %}
+<div style="width: 105%; height: 300px; padding: 20px;"></div>
+<div class="float-right my-5 " style="margin-left: 1150px;">
+    <a href="{% url 'logout' %}" class="btn btn-info btn-lg ">
+      <span class="glyphicon glyphicon-log-out"></span> Log out
+  </a>
+</div><br>
+{% endblock %}
